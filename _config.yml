@@ -1,0 +1,44 @@
+# Site settings
+title: siinatra35
+tagline: "Malware research, CTF writeups & offensive security notes."
+description: "A cybersecurity blog: malware analysis, Hack The Box writeups, and research notes."
+url: "https://siinatra35.github.io"
+baseurl: ""
+author: siinatra35
+github_username: siinatra35
+
+# Build
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    css_class: highlight
+
+permalink: /posts/:title/
+timezone: UTC
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Labels shown on post cards. Key = category slug used in front matter.
+category_labels:
+  malware: "Malware Analysis"
+  htb: "Hack The Box"
+  research: "Research"
+  notes: "Notes"
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
