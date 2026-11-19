@@ -1,0 +1,28 @@
+---
+layout: default
+title: Posts
+permalink: /posts/
+---
+<section class="wrap page">
+  <p class="eyebrow mono">// archive</p>
+  <h1 class="page-title">All posts</h1>
+
+  <div class="filters mono" role="tablist" aria-label="Filter by category">
+    <button class="filter is-active" data-filter="all">all</button>
+    {% for c in site.category_labels %}
+      {% if site.categories[c[0]] %}<button class="filter" data-filter="{{ c[0] }}">{{ c[1] | downcase }}</button>{% endif %}
+    {% endfor %}
+  </div>
+
+  <ul class="archive">
+    {% for post in site.posts %}
+    {% assign cat = post.categories | first %}
+    <li class="archive-item" data-cat="{{ cat }}">
+      <time class="mono dim" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%Y.%m.%d' }}</time>
+      <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+      <span class="tag tag-{{ cat }} mono">{{ site.category_labels[cat] | default: cat }}</span>
+    </li>
+    {% endfor %}
+  </ul>
+  <p class="empty dim mono" hidden>// nothing here yet</p>
+</section>

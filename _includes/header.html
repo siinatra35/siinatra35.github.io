@@ -1,0 +1,14 @@
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="{{ '/' | relative_url }}">
+      <span class="brand-prompt">~/</span>{{ site.title }}<span class="cursor" aria-hidden="true">_</span>
+    </a>
+    <nav class="nav" aria-label="Main">
+      {% assign path = page.url %}
+      <a href="{{ '/' | relative_url }}" {% if path == '/' %}aria-current="page"{% endif %}>home</a>
+      <a href="{{ '/posts/' | relative_url }}" {% if path == '/posts/' %}aria-current="page"{% endif %}>posts</a>
+      <a href="{{ '/about/' | relative_url }}" {% if path == '/about/' %}aria-current="page"{% endif %}>about</a>
+      <a href="{{ '/feed.xml' | relative_url }}">rss</a>
+    </nav>
+  </div>
+</header>

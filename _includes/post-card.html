@@ -1,0 +1,17 @@
+{% assign cat = include.post.categories | first %}
+<article class="card">
+  <a class="card-link" href="{{ include.post.url | relative_url }}">
+    <div class="card-meta mono">
+      <span class="tag tag-{{ cat }}">{{ site.category_labels[cat] | default: cat | default: 'post' }}</span>
+      <time datetime="{{ include.post.date | date_to_xmlschema }}">{{ include.post.date | date: '%Y.%m.%d' }}</time>
+    </div>
+    <h3 class="card-title">{{ include.post.title }}</h3>
+    {% if include.post.description %}<p class="card-desc">{{ include.post.description }}</p>
+    {% else %}<p class="card-desc">{{ include.post.excerpt | strip_html | truncatewords: 28 }}</p>{% endif %}
+    <div class="card-foot mono">
+      {% if include.post.difficulty %}<span class="pill">{{ include.post.difficulty }}</span>{% endif %}
+      {% for t in include.post.tags limit: 3 %}<span class="pill">#{{ t }}</span>{% endfor %}
+      <span class="read">read →</span>
+    </div>
+  </a>
+</article>

@@ -1,0 +1,40 @@
+---
+layout: default
+---
+{% assign cat = page.categories | first %}
+<article class="wrap post">
+  <header class="post-header">
+    <a class="back mono" href="{{ '/posts/' | relative_url }}">← cd ../posts</a>
+    <div class="card-meta mono">
+      <span class="tag tag-{{ cat }}">{{ site.category_labels[cat] | default: cat | default: 'post' }}</span>
+      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%Y.%m.%d' }}</time>
+      {% assign words = content | number_of_words %}
+      <span class="dim">{{ words | divided_by: 200 | plus: 1 }} min read</span>
+    </div>
+    <h1 class="post-title">{{ page.title }}</h1>
+    {% if page.description %}<p class="lede">{{ page.description }}</p>{% endif %}
+
+    {% if page.box %}
+    <dl class="box-info mono">
+      {% for item in page.box %}
+      <div><dt>{{ item[0] }}</dt><dd>{{ item[1] }}</dd></div>
+      {% endfor %}
+    </dl>
+    {% endif %}
+  </header>
+
+  <div class="prose">
+    {{ content }}
+  </div>
+
+  {% if page.tags.size > 0 %}
+  <footer class="post-tags mono">
+    {% for t in page.tags %}<span class="pill">#{{ t }}</span>{% endfor %}
+  </footer>
+  {% endif %}
+
+  <nav class="post-nav mono" aria-label="More posts">
+    {% if page.previous %}<a href="{{ page.previous.url | relative_url }}"><span class="dim">← prev</span>{{ page.previous.title }}</a>{% else %}<span></span>{% endif %}
+    {% if page.next %}<a class="next" href="{{ page.next.url | relative_url }}"><span class="dim">next →</span>{{ page.next.title }}</a>{% endif %}
+  </nav>
+</article>
