@@ -4,3 +4,9 @@ _site/
 Gemfile.lock
 vendor/
 .bundle/
+
+# CherryTree notebooks (raw notes, never publish)
+*.ctb
+*.ctd
+*.ctz
+*.ctx
