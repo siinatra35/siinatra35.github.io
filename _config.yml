@@ -29,6 +29,7 @@ category_labels:
   htb: "Hack The Box"
   research: "Research"
   notes: "Notes"
+  offsec: "OffSec"
 
 defaults:
   - scope:
@@ -42,3 +43,5 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - vendor
+  - retired
+  - scripts

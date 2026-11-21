@@ -10,3 +10,6 @@ vendor/
 *.ctd
 *.ctz
 *.ctx
+
+# Old writeups moved off the blog (local only, never committed)
+/retired/
